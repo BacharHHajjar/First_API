@@ -11,9 +11,16 @@ app.use(
   })
 );
 
-app.post("/", (req, res) => {
+app.post("/api", (req, res) => {
   console.log(req.body);
+  let response = {};
+  response.status = "Ok";
+  response.body = req.body.nameOnCard;
+  res.send(response);
+});
+
+app.get("/api", (req, res) => {
   res.send("OK");
 });
 
-app.listen(5000);
+app.listen(5000, () => console.log("Server running on port 5000"));
